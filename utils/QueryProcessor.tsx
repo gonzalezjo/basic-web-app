@@ -6,6 +6,11 @@ export default function QueryProcessor(query: string): string {
       "writer in the English language and the world's pre-eminent dramatist."
     );
   }
+  if (query.toLowerCase().includes("what is your andrew id?")) {
+    return (
+      "good question! I'd prefer not to put my first name on this internet-facing account though."
+    );
+  }
 
   return "";
 }
