@@ -1,0 +1,14 @@
+name: Continuous Integration
+on:
+push:
+branches:
+- main
+jobs:
+CIJob:
+    runs-on: ubuntu-latest
+    name: CIJobMachine
+    steps:
+    - uses: actions/checkout@v3
+    - uses: bahmutov/npm-install@v1
+    - run: npm run lint
+    - run: npm run test
