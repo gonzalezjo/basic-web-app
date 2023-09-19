@@ -25,4 +25,12 @@ describe("QueryProcessor", () => {
             "good question! I'd prefer not to put my first name on this internet-facing account though."
         );
     });
+
+    test('should return name', () => {
+        const query = "What is your name?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe(
+            "pshufb"
+        );
+    });
 });

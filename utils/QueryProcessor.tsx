@@ -11,6 +11,11 @@ export default function QueryProcessor(query: string): string {
       "good question! I'd prefer not to put my first name on this internet-facing account though."
     );
   }
+  if (query.toLowerCase().includes("what is your name?")) {
+    return (
+      "pshufb"
+    );
+  }
 
   return "";
 }
