@@ -66,5 +66,11 @@ export default function QueryProcessor(query: string): string {
     return primes.join(", ");
   }
 
+  if (query.toLowerCase().includes("what is ") && query.toLowerCase().includes("to the power of")) {
+    const numbers: number[] = query.split(/\D+/).filter(Boolean).map(Number);
+    const result: number = Math.pow(numbers[0], numbers[1]);
+    return result.toString();
+  }
+
   return "";
 }
