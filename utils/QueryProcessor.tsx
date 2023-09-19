@@ -27,7 +27,7 @@ export default function QueryProcessor(query: string): string {
   }
   // chatgtp code
   if (query.toLowerCase().includes("which of the following numbers is both a square and a cube")) {
-    return query.split(/\D+/).filter(Boolean).map(Number).filter((x) => Math.cbrt(x) === Math.floor(Math.cbrt(x)) && Math.sqrt(x) === Math.floor(Math.sqrt(x))).reduce(((a, b) => a + b.toString() + " "), "").trim();
+    return query.split(/\D+/).filter(Boolean).map(Number).filter((x) => Math.cbrt(x) === Math.floor(Math.cbrt(x)) && Math.sqrt(x) === Math.floor(Math.sqrt(x))).join(", ");
   }
 
   // gtp code
