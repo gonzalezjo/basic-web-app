@@ -16,6 +16,14 @@ export default function QueryProcessor(query: string): string {
       "pshufb"
     );
   }
+  if (query.toLowerCase().includes("Which of the following numbers is the largest")) {
+    return query.split(/\D+/).filter(Boolean).map(Number).reduce((x, y) => Math.max(x, y)).toString();
+  }
+  if (query.toLowerCase().includes("What is ")) {
+    const num: number = query.split(/\D+/).filter(Boolean).map(Number).reduce((x, y) => x + y);
+
+    return num.toString();
+  }
 
   return "";
 }
