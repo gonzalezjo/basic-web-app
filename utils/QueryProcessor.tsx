@@ -37,10 +37,33 @@ export default function QueryProcessor(query: string): string {
     return result.toString();
   }
 
+  // GPT code
   if (query.toLowerCase().includes("what is ") && query.toLowerCase().includes("minus")) {
     const numbers: number[] = query.split(/\D+/).filter(Boolean).map(Number);
     const result: number = numbers.reduce((x, y) => x - y);
     return result.toString();
+  }
+
+  // GPT code
+  function isPrime(num: number): boolean {
+    if (num < 2) {
+      return false;
+    }
+
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+      if (num % i === 0) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  // GPT code
+  if (query.toLowerCase().includes("which of the following numbers are primes:")) {
+    const numbers: number[] = query.split(/\D+/).filter(Boolean).map(Number);
+    const primes: number[] = numbers.filter((num) => isPrime(num));
+    return primes.join(", ");
   }
 
   return "";
