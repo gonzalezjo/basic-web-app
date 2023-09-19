@@ -17,16 +17,24 @@ export default function QueryProcessor(query: string): string {
     );
   }
   // Shout out to ChatGPT for the parsing one-liner.
-  if (query.toLowerCase().includes("Which of the following numbers is the largest")) {
+  if (query.toLowerCase().includes("which of the following numbers is the largest")) {
     return query.split(/\D+/).filter(Boolean).map(Number).reduce((x, y) => Math.max(x, y)).toString();
   }
-  if (query.toLowerCase().includes("What is ") && query.toLowerCase().includes("plus")) {
+  if (query.toLowerCase().includes("what is ") && query.toLowerCase().includes("plus")) {
     const num: number = query.split(/\D+/).filter(Boolean).map(Number).reduce((x, y) => x + y);
 
     return num.toString();
   }
-  if (query.toLowerCase().includes("Which of the following numbers is both a square and a cube")) {
+  // chatgtp code
+  if (query.toLowerCase().includes("which of the following numbers is both a square and a cube")) {
     return query.split(/\D+/).filter(Boolean).map(Number).filter((x) => Math.cbrt(x) === Math.floor(Math.cbrt(x)) && Math.sqrt(x) === Math.floor(Math.sqrt(x))).reduce(((a, b) => a + b.toString() + " "), "").trim();
+  }
+
+  // gtp code
+  if (query.toLowerCase().includes("what is ") && query.toLowerCase().includes("multiplied by")) {
+    const numbers: number[] = query.split(/\D+/).filter(Boolean).map(Number);
+    const result: number = numbers.reduce((x, y) => x * y);
+    return result.toString();
   }
 
   return "";
