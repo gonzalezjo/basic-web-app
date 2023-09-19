@@ -37,5 +37,11 @@ export default function QueryProcessor(query: string): string {
     return result.toString();
   }
 
+  if (query.toLowerCase().includes("what is ") && query.toLowerCase().includes("minus")) {
+    const numbers: number[] = query.split(/\D+/).filter(Boolean).map(Number);
+    const result: number = numbers.reduce((x, y) => x - y);
+    return result.toString();
+  }
+
   return "";
 }
