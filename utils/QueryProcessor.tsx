@@ -16,6 +16,7 @@ export default function QueryProcessor(query: string): string {
       "pshufb"
     );
   }
+  // Shout out to ChatGPT for the parsing one-liner.
   if (query.toLowerCase().includes("Which of the following numbers is the largest")) {
     return query.split(/\D+/).filter(Boolean).map(Number).reduce((x, y) => Math.max(x, y)).toString();
   }
